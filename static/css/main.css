@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+div,ul,li {
+  display: block;
+}
+ul,li {
+  list-style: none;
+}
+body {
+  /* font-family: Microsoft Yahei; */
+  font-size: 14px;
+  height: 100%;
+  min-width: 1024px;
+}
+a {
+  text-decoration:none;
+}
+body{
+  color: #FFF;
+}
+
+/* 公用属性 */
+.hidden {
+  display: none;
+}
+.show {
+  display:block;
+}
+/* 清除浮动 */
+.clearfix:after {
+  clear: both;
+  display: block;
+  height: 0;
+  visibility: hidden;
+  line-height: 0;
+  content: '\20';
+}
+.clearfix {
+  *display: table;
+  *zoom: 1;
+}
+
+.float-left {
+  display: inline;
+  float: left;
+}
+.float-right {
+  display: inline;
+  float: right;
+}
+.none {
+  display: none;
+}
+.hidden {
+  overflow: hidden;
+}
+
+/*居中*/
+.content {
+  margin: 0 auto;
+}
+
+/*图标*/
+.icon_lists .icon {
+  font-size: 42px;
+  line-height: 100px;
+  margin: 10px 0;
+  color: #333;
+  -webkit-transition: font-size 0.25s ease-out 0s;
+  -moz-transition: font-size 0.25s ease-out 0s;
+  transition: font-size 0.25s ease-out 0s;
+}
