@@ -1,5 +1,5 @@
 {
-  "name": "control-situation-web",
+  "name": "demon-web",
   "version": "1.0.0",
   "description": "control situation project web page",
   "author": "Demon-HY",
@@ -16,6 +16,7 @@
     "update": "^0.7.4",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
+    "axios": "^0.18.0",
     "vuex": "^3.0.1"
   },
   "devDependencies": {

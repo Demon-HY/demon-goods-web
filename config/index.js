@@ -12,12 +12,20 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     // 下面是代理表，作用是用来，建一个虚拟api服务器用来代理本机的请求，只能用于开发模式
-    proxyTable: {},
+    proxyTable: {
+        '/api': {
+        target: 'http://http://www.demon.com:8081',
+        changeOrigin: false,
+        pathRewrite: {
+          '^/api': '/'
+        }
+      }
+    },
 
     // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST
+    host: 'http://www.demon.com', // can be overwritten by process.env.HOST
     // 下面是dev-server的端口号，可以自行更改
-    port: 8081,
+    port: 8080,
     // 下面表示是否编译后自动启动浏览器
     autoOpenBrowser: false,
     errorOverlay: true,

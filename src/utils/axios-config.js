@@ -5,13 +5,17 @@ import router from '../router/index'
 
 console.log(process.env);
 
+const token = sessionStorage.getItem('token')
+
 const http = Axios.create({
   baseURL: process.env.BASE_URL,
   // baseURL: 'http://localhost:8083/',
   responseType: 'json',
   withCredentials: true, // 请求会带上 Cookies
   headers: {
-    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+    'X-Token': token,
+    'X-Device': 'web'
   },
   transformRequest: [function (data) {
     // 请求前处理数据
@@ -34,14 +38,6 @@ const http = Axios.create({
 
 // 请求时的拦截
 http.interceptors.request.use(config => {
-    const token = sessionStorage.getItem('token')
-
-    config.headers = {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'X-Token': token,
-      'X-Device': 'web'
-    }
-
     return config;
   }, error => {
     console.log('请求时的拦截');

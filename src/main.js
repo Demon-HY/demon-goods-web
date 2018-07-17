@@ -15,9 +15,9 @@ import '@/utils/element-init'
 // 引入图标库
 import './assets/icon/iconfont.css'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
-Vue.config.productionTip = true;
+Vue.config.productionTip = true
 
 import {checkLogin} from '@/api/user/auth_api'
 
@@ -46,12 +46,12 @@ router.beforeEach((to, from, next) => {
   // }
 
   next()
-});
+})
 
 // 定义全局过滤器
 Vue.filter('toString', function (value) {
-  if (!value) return '';
-  return value.toString();
+  if (!value) return ''
+  return value.toString()
 });
 
 Vue.prototype.$api = api
