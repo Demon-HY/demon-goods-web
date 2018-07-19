@@ -3,18 +3,12 @@ import Axios from 'axios'
 import Vue from 'vue';
 import router from '../router/index'
 
-console.log(process.env);
-
-const token = sessionStorage.getItem('token')
-
 const http = Axios.create({
   baseURL: process.env.BASE_URL,
-  // baseURL: 'http://localhost:8083/',
   responseType: 'json',
   withCredentials: true, // 请求会带上 Cookies
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
-    'X-Token': token,
     'X-Device': 'web'
   },
   transformRequest: [function (data) {
