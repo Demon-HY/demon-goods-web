@@ -48,6 +48,8 @@
             this.$message.error(resp.message);
           }
 
+          console.log(resp);
+
           // 将 token 写入 localStorage
           sessionStorage.setItem("token", resp.result.tokenInfo.token);
           this.$message.success(resp.message);

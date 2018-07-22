@@ -2,36 +2,38 @@
 import Axios from 'axios'
 import Vue from 'vue';
 import router from '../router/index'
+import Qs from 'qs'
 
 const http = Axios.create({
   baseURL: process.env.BASE_URL,
   responseType: 'json',
   withCredentials: true, // 请求会带上 Cookies
   headers: {
-    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+    'Content-Type': 'application/json',
     'X-Device': 'web'
   },
-  transformRequest: [function (data) {
-    // 请求前处理数据
-    let newData = '';
-    for (let k in data) {
-      if (data.hasOwnProperty(k) === true) {
-        newData += encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) + '&';
-      }
-    }
-    return newData;
-  }],
-  transformResponse: [(data) => {
-    // 这里提前处理返回的数据
-    return data;
-  }],
-  timeout: 3000 // 超时时间
+  // 请求前处理数据
+  // transformRequest: [function (data) {
+  //   // let newData = '';
+  //   // for (let k in data) {
+  //   //   if (data.hasOwnProperty(k) === true) {
+  //   //     newData += encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) + '&';
+  //   //   }
+  //   // }
+  //   // console.log(data, newData);
+  //   // return newData.substring(0, newData.length - 1);
+  //   return Qs.stringify(data)
+  // }],
+  // transformResponse: [(data) => {
+  //   // 这里提前处理返回的数据
+  //   return data;
+  // }],
+  timeout: 10000 // 超时时间
 });
-
-// http.baseURL = process.env.BABEL_ENV;
 
 // 请求时的拦截
 http.interceptors.request.use(config => {
+  console.log(config);
     return config;
   }, error => {
     console.log('请求时的拦截');
@@ -77,5 +79,8 @@ export default {
   },
   delete: function (url, params, callback) {
     return apiAxios('DELETE', url, params, callback)
+  },
+  config: {
+    ANNO_PATH: '/anon/'
   }
 }
