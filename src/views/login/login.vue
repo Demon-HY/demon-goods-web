@@ -44,14 +44,15 @@
       // login
       toLogin(account, password) {
         login(account, password).then(resp => {
-          if (resp.code !== '200') {
-            this.$message.error(resp.message);
-          }
-
           console.log(resp);
 
-          // 将 token 写入 localStorage
-          sessionStorage.setItem("token", resp.result.tokenInfo.token);
+          if (resp.retCode !== 200) {
+            this.$message.error(resp.message);
+            return;
+          }
+
+          // 将 token 写入 sessionStorage
+          sessionStorage.setItem("token", resp.result.token.token);
           this.$message.success(resp.message);
 
           let redirect = decodeURIComponent(this.$route.query.redirect || '/index');

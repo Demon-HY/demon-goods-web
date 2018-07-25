@@ -10,7 +10,8 @@ const http = Axios.create({
   withCredentials: true, // 请求会带上 Cookies
   headers: {
     'Content-Type': 'application/json',
-    'X-Device': 'web'
+    'X-Device': 'web',
+    'X-Token': sessionStorage.getItem('token')
   },
   // 请求前处理数据
   // transformRequest: [function (data) {
@@ -33,7 +34,6 @@ const http = Axios.create({
 
 // 请求时的拦截
 http.interceptors.request.use(config => {
-  console.log(config);
     return config;
   }, error => {
     console.log('请求时的拦截');
